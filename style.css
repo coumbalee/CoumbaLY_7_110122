@@ -1,7 +1,31 @@
+body {
+  margin: 2% 8% 1% 5%;
+}
+
 .header {
   display: flex;
   justify-content: center;
 }
 .header__logo {
   width: 200px;
+}
+/* SECTION-SEARCH */
+.section-search__button {
+  border: none;
+  background-color: transparent;
+  position: relative;
+}
+/* .fa-search {
+  height: 100px;
+} */
+.section-search__input {
+  background-color: #e7e7e7;
+  width: 100%;
+  border: none;
+  padding: 20px;
+  margin-top: 15px;
+}
+.section-search__input::placeholder {
+  opacity: 40%;
+  font-size: 1.1rem;
 }
