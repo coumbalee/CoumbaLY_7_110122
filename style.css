@@ -31,3 +31,7 @@ body {
   opacity: 40%;
   font-size: 1.1rem;
 }
+/* Section-tags */
+.section-tags {
+  display: none;
+}
