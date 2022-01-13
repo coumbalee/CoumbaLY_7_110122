@@ -1,6 +1,7 @@
 "use strict";
-import recipes from "./recipes.js";
-
+import { recipes } from "./recipes.js";
+recipes;
+console.log(recipes);
 // HEADER
 function generateHeader() {
   const header = document.querySelector("header");
@@ -31,4 +32,3 @@ function generateSearchBar() {
   searchBar.append(inputSearch, searchBarButton);
 }
 generateSearchBar();
-recipes;
