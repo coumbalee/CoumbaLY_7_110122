@@ -1,5 +1,6 @@
 "use strict";
-// import { getIdsFromJson } from "./dataFunction.js";
+import recipes from "./recipes.js";
+
 // HEADER
 function generateHeader() {
   const header = document.querySelector("header");
@@ -30,4 +31,4 @@ function generateSearchBar() {
   searchBar.append(inputSearch, searchBarButton);
 }
 generateSearchBar();
-// getIdsFromJson();
+recipes;
