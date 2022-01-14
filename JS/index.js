@@ -1,7 +1,10 @@
 "use strict";
 import { recipes } from "./recipes.js";
+import { generateSearchBar } from "./searchBar.js";
+// import {  } from "./dropdowns.js";
 recipes;
 console.log(recipes);
+
 // HEADER
 function generateHeader() {
   const header = document.querySelector("header");
@@ -15,20 +18,8 @@ function generateHeader() {
   headerLink.classList.add("header__link");
   headerLink.prepend(headerLogo);
 }
-generateHeader();
-
-// BARRE DE RECHERCHE
-function generateSearchBar() {
-  const searchSection = document.querySelector(".section-search");
-  const searchBar = document.createElement("div");
-  searchBar.classList.add("section-search__bar");
-  const inputSearch = document.createElement("input");
-  inputSearch.classList.add("section-search__input");
-  inputSearch.placeholder = `Rechercher un ingrédient, appareil, ustensil ou une recette`;
-  const searchBarButton = document.createElement("button");
-  searchBarButton.classList.add("section-search__button");
-  searchBarButton.innerHTML += `<i class="fas fa-search"></i>`;
-  searchSection.prepend(searchBar);
-  searchBar.append(inputSearch, searchBarButton);
+async function displayPage() {
+  generateHeader();
+  generateSearchBar();
 }
-generateSearchBar();
+displayPage();
