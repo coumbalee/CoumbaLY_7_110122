@@ -1,9 +1,15 @@
 "use strict";
 import { recipes } from "./recipes.js";
+import {
+  getAllAppliancesFromRecipes,
+  getAllUstensilsFromRecipes,
+  getAllIngredientsFromRecipes,
+} from "./dataRecipes.js";
+
 import { generateSearchBar } from "./searchBar.js";
 // import {  } from "./dropdowns.js";
 recipes;
-console.log(recipes);
+console.log(recipes[2].appliance);
 
 // HEADER
 function generateHeader() {
