@@ -5,11 +5,9 @@ import {
   getAllUstensilsFromRecipes,
   getAllIngredientsFromRecipes,
 } from "./dataRecipes.js";
-
+import { displayDropdowns } from "./dropdowns.js";
 import { generateSearchBar } from "./searchBar.js";
-// import {  } from "./dropdowns.js";
 recipes;
-console.log(recipes[2].appliance);
 
 // HEADER
 function generateHeader() {
@@ -27,5 +25,6 @@ function generateHeader() {
 async function displayPage() {
   generateHeader();
   generateSearchBar();
+  displayDropdowns();
 }
 displayPage();
