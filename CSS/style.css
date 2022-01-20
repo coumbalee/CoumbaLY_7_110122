@@ -19,7 +19,10 @@ body {
   font-size: 1.5rem;
   opacity: 0.8;
 }
-
+.section-filters {
+  display: flex;
+  justify-content: space-between;
+}
 .section-search__input {
   background-color: #e7e7e7;
   width: 100%;
