@@ -14,23 +14,23 @@ export default class Select {
   }
 }
 
-export function generateUstensilsSelect() {
-  const ustensilsSelect = new Select("red", "Ustensiles");
-  const ustensilsSelectDropdown = ustensilsSelect.generateCustomSelect();
-  const section = document.querySelector(".section-filters");
-  section.innerHTML += `${ustensilsSelectDropdown}`;
-}
+// export function generateUstensilsSelect() {
+//   const ustensilsSelect = new Select("red", "Ustensiles");
+//   const ustensilsSelectDropdown = ustensilsSelect.generateCustomSelect();
+//   const section = document.querySelector(".section-filters");
+//   section.innerHTML += `${ustensilsSelectDropdown}`;
+// }
 
-export function generateApplianceSelect() {
-  const applianceSelect = new Select("green", "Appareils");
-  const applianceCustomSelect = applianceSelect.generateCustomSelect();
-  const section = document.querySelector(".section-filters");
-  section.innerHTML += `${applianceCustomSelect}`;
-}
+// export function generateApplianceSelect() {
+//   const applianceSelect = new Select("green", "Appareils");
+//   const applianceCustomSelect = applianceSelect.generateCustomSelect();
+//   const section = document.querySelector(".section-filters");
+//   section.innerHTML += `${applianceCustomSelect}`;
+// }
 
-export function generateIngrédientsSelect() {
-  const ingrédientsSelect = new Select("blue", "Ingrédients");
-  const ingrédientsCustomSelect = ingrédientsSelect.generateCustomSelect();
-  const section = document.querySelector(".section-filters");
-  section.innerHTML += `${ingrédientsCustomSelect}`;
-}
+// export function generateIngrédientsSelect() {
+//   const ingrédientsSelect = new Select("blue", "Ingrédients");
+//   const ingrédientsCustomSelect = ingrédientsSelect.generateCustomSelect();
+//   const section = document.querySelector(".section-filters");
+//   section.innerHTML += `${ingrédientsCustomSelect}`;
+// }
