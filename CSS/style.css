@@ -44,8 +44,8 @@ body {
 .filters__arrow--red {
   position: absolute;
   color: rgb(255, 255, 255);
-  left: 210px;
-  top: 300px;
+  right: 130px;
+  top: 230px;
   size: 1rem;
 }
 .fas {
@@ -65,8 +65,8 @@ body {
 .filters__arrow--green {
   position: absolute;
   color: rgb(255, 255, 255);
-  left: 210px;
-  top: 215px;
+  left: 750px;
+  top: 230px;
   size: 1rem;
 }
 .filters__select--green {
@@ -84,7 +84,7 @@ body {
   position: absolute;
   color: rgb(255, 255, 255);
   left: 210px;
-  top: 390px;
+  top: 230px;
   size: 1rem;
 }
 .filters__select--blue {
