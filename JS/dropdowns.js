@@ -1,11 +1,4 @@
-// export function generateDropdown()
 import Select from "./SelectClass.js";
-console.log(Select);
-import {
-  generateApplianceSelect,
-  generateUstensilsSelect,
-  generateIngrédientsSelect,
-} from "./SelectClass.js";
 import {
   getAllAppliancesFromRecipes,
   getAllUstensilsFromRecipes,
@@ -13,6 +6,43 @@ import {
 } from "./dataRecipes.js";
 import { recipes } from "./recipes.js";
 
+function generateUstensilsSelect() {
+  const ustensilsSelect = new Select("red", "Ustensiles");
+  const ustensilsSelectDropdown = ustensilsSelect.generateCustomSelect();
+  const section = document.querySelector(".section-filters");
+  section.innerHTML += `${ustensilsSelectDropdown}`;
+}
+function generateApplianceSelect() {
+  const applianceSelect = new Select("green", "Appareils");
+  const applianceCustomSelect = applianceSelect.generateCustomSelect();
+  const section = document.querySelector(".section-filters");
+  section.innerHTML += `${applianceCustomSelect}`;
+}
+
+function generateIngrédientsSelect() {
+  const ingrédientsSelect = new Select("blue", "Ingrédients");
+  const ingrédientsCustomSelect = ingrédientsSelect.generateCustomSelect();
+  const section = document.querySelector(".section-filters");
+  section.innerHTML += `${ingrédientsCustomSelect}`;
+}
+
+function addListenersToDropDowns(value, index) {
+  let elts = Array.from(document.querySelectorAll(".section-filters__select"));
+  elts.forEach((elt) =>
+    elt.addEventListener("click", (e) => {
+      e.preventDefault();
+      // const sortOptions = sortOptionsByButtonValue(
+      //   recipes,
+      //   values[index],
+      //   index
+      // );
+      // console.log(sortOptions);
+      // displayOptions(sortOptions);
+      // const placeholder = displayPlaceholderByButtonValue(value);
+      //   console.log(placeholder);
+    })
+  );
+}
 export function displayDropdowns() {
   const ingrédients = generateIngrédientsSelect();
   const appliance = generateApplianceSelect();
@@ -21,38 +51,23 @@ export function displayDropdowns() {
   addListenersToDropDowns([ingrédients, appliance, ustensils]);
 }
 
-function addListenersToDropDowns(values, index) {
-  let elts = Array.from(document.querySelectorAll(".section-filters__select"));
-  elts.forEach((elt) =>
-    elt.addEventListener("click", (e) => {
-      e.preventDefault();
-      const sortOptions = sortOptionsByButtonValue(
-        recipes,
-        values[index],
-        index
-      );
-      console.log(sortOptions);
-
-      displayOptions(sortOptions);
-    })
-  );
-}
-
 // récupérer les options selon la valeur du bouton
-function sortOptionsByButtonValue(index) {
-  switch (index) {
-    case 0:
-      return getAllIngredientsFromRecipes();
-    case 1:
-      return getAllAppliancesFromRecipes();
+// function sortOptionsByButtonValue(recipes, values, index) {
+//   switch (index) {
+//     case 0:
+//       return getAllIngredientsFromRecipes();
 
-    case 2:
-      return getAllUstensilsFromRecipes();
+//     case 1:
+//       return getAllAppliancesFromRecipes();
 
-    default:
-      break;
-  }
-}
+//     case 2:
+//       return getAllUstensilsFromRecipes();
+
+//     default:
+//       break;
+//   }
+// }
+
 // tri pour les placeholders des input
 
 // function displayPlaceholderByButtonValue(value) {
