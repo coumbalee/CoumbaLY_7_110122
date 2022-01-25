@@ -7,9 +7,13 @@ export function getAllAppliancesFromRecipes() {
       recipes.map((recipes) => recipes.appliance.toLowerCase()).sort()
     ),
   ];
+  // for (let i = 0; i < recipes.length; i++) {
+  //   console.log(recipes[i].appliance);
+  // }
   appliances.filter;
 
   console.log(appliances);
+
   return appliances;
 }
 getAllAppliancesFromRecipes();
