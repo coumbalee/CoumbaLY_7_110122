@@ -1,11 +1,9 @@
 export default class Card {
-  constructor(name, time, ingredients, description, appliance, ustensils) {
+  constructor(name, time, ingredients, description) {
     this.name = name;
     this.time = time;
     this.ingredients = ingredients;
     this.description = description;
-    this.appliance = appliance;
-    this.ustensils = ustensils.map((ustensil) => ustensil.toLowerCase());
   }
   generateCard() {
     return `
