@@ -48,7 +48,7 @@ async function addListenersToDropDowns(values, index) {
       displayOptions();
       // const placeholder = displayPlaceholderByButtonValue(value);
       //   console.log(placeholder);
-      filterFunction();
+      // filterFunction();
     })
   );
 }
@@ -124,7 +124,6 @@ async function displayApplianceOptions() {
     const listElmt = document.createElement("li");
     const link = document.createElement("a");
     link.href = "#";
-    // Ajouter les attributs au liens
     link.innerHTML = appliances[i];
     appliancesList.appendChild(listElmt);
     listElmt.appendChild(link);
