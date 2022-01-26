@@ -10,7 +10,6 @@ export function getAllAppliancesFromRecipes() {
   // for (let i = 0; i < recipes.length; i++) {
   //   console.log(recipes[i].appliance);
   // }
-  appliances.filter;
 
   console.log(appliances);
 
@@ -29,8 +28,6 @@ export function getAllUstensilsFromRecipes() {
         .sort()
     ),
   ];
-
-  ustensils.filter;
 
   console.log(ustensils);
   return ustensils;
