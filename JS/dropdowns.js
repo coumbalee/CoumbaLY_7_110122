@@ -15,19 +15,16 @@ export function displayDropdowns() {
   const appliance = generateApplianceSelect();
   const ustensils = generateUstensilsSelect();
   const ingrédients = generateIngrédientsSelect();
-  addListenersToDropDowns(appliance, ustensils, ingrédients);
+  addListenersToDropDowns();
 }
 
-function addListenersToDropDowns(recipes, value) {
+function addListenersToDropDowns() {
   let elts = Array.from(document.querySelectorAll(".section-filters__select"));
   elts.forEach((elt) =>
     elt.addEventListener("click", (e) => {
       e.preventDefault();
-      const sortOptions = sortOptionsByButtonValue(
-        recipes,
-        value
-        // e.target.dataset.filter
-      );
+      console.log(e.target);
+      const sortOptions = sortOptionsByButtonValue(e.target.value);
       // console.log(e.target.dataset.filter);
       displayOptions(sortOptions);
     })
@@ -35,15 +32,16 @@ function addListenersToDropDowns(recipes, value) {
 }
 
 // récupérer les options selon la valeur du bouton
-function sortOptionsByButtonValue(recipes, value, filter) {
+function sortOptionsByButtonValue(value) {
+  console.log(value);
   switch (value) {
     case "Ingrédients":
-      return getAllIngredientsFromRecipes(recipes, filter);
+      return getAllIngredientsFromRecipes();
     case "Appareils":
-      return getAllAppliancesFromRecipes(recipes, filter);
+      return getAllAppliancesFromRecipes();
 
     case "Ustensiles":
-      return getAllUstensilsFromRecipes(recipes, filter);
+      return getAllUstensilsFromRecipes();
 
     default:
       break;
@@ -69,14 +67,18 @@ function displayPlaceholderByButtonValue(value) {
 }
 
 // afficher les options avec function displayOptions et y appeler la fonction displayPlaceholderByButtonValue
-function displayOptions() {
-  displayApllianceOptions();
+function displayOptions(options) {
+  displayApllianceOptions(options);
   // displayIngrédientsOptions();
   // displayUstensilsOptions();
 }
-function displayApllianceOptions() {
+function displayApllianceOptions(options) {
   const list = document.querySelector(".section-filters__custom--select");
+  const applianceContainer = document.querySelector("#green");
+  applianceContainer.innerHTML = options
+    .map((option) => `<li>${option}</li>`)
+    .join("");
   console.log(list);
   // boucle for dans le tableau des appareils de la fonction getAllAppliancesFromRecipes
 }
-displayOptions();
+//displayOptions();
