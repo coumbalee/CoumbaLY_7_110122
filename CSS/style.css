@@ -37,6 +37,7 @@ body {
 .section-filters {
   margin-top: 20px;
   margin-bottom: 20px;
+  display: flex;
 }
 .filters__arrow--red {
   position: absolute;

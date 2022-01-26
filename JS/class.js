@@ -18,19 +18,19 @@ export function generateUstensilsSelect() {
   const ustensilsSelect = new Select("red", "Ustensiles");
   const ustensilsSelectDropdown = ustensilsSelect.generateCustomSelect();
   const section = document.querySelector(".section-filters");
-  section.innerHTML = `${ustensilsSelectDropdown}`;
+  section.innerHTML += `${ustensilsSelectDropdown}`;
 }
 
 export function generateApplianceSelect() {
   const applianceSelect = new Select("green", "Appareils");
   const applianceCustomSelect = applianceSelect.generateCustomSelect();
-  const section = document.querySelector(".section-tags");
-  section.innerHTML = `${applianceCustomSelect}`;
+  const section = document.querySelector(".section-filters");
+  section.innerHTML += `${applianceCustomSelect}`;
 }
 
 export function generateIngrédientsSelect() {
   const ingrédientsSelect = new Select("blue", "Ingrédients");
   const ingrédientsCustomSelect = ingrédientsSelect.generateCustomSelect();
-  const section = document.querySelector(".section-cards");
-  section.innerHTML = `${ingrédientsCustomSelect}`;
+  const section = document.querySelector(".section-filters");
+  section.innerHTML += `${ingrédientsCustomSelect}`;
 }
