@@ -83,8 +83,21 @@ body {
   z-index: 100;
   color: black;
 }
-.section-filters__list--green {
+.section-filters__custom-select.selected .section-filters__list--green {
   background-color: #68d9a4;
+  display: flex;
+  flex-wrap: wrap;
+  height: 200px;
+}
+.section-filters__custom-select.selected .section-filters__select {
+  width: 350px;
+}
+.section-filters__list--green a {
+  padding: 20px;
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+  width: 100px;
 }
 .filters__arrow--blue {
   position: absolute;
@@ -104,7 +117,7 @@ body {
   background-color: #3282f7;
 }
 .selected {
-  width: 400px;
+  width: 350px;
 }
 /* .filters__arrow--green {
   position: absolute;
