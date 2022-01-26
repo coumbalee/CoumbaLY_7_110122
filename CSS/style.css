@@ -45,11 +45,11 @@ body {
   position: absolute;
   color: rgb(255, 255, 255);
   right: 130px;
-  top: 230px;
+  top: 235px;
   size: 1rem;
 }
 .fas {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 .filters__select--red {
   border: none;
@@ -66,7 +66,7 @@ body {
   position: absolute;
   color: rgb(255, 255, 255);
   left: 750px;
-  top: 230px;
+  top: 235px;
   size: 1rem;
 }
 .filters__select--green {
@@ -79,12 +79,18 @@ body {
   color: white;
   background-color: #68d9a4;
 }
-
+.filters__select--green::placeholder {
+  z-index: 100;
+  color: black;
+}
+.section-filters__list--green {
+  background-color: #68d9a4;
+}
 .filters__arrow--blue {
   position: absolute;
   color: rgb(255, 255, 255);
   left: 210px;
-  top: 230px;
+  top: 235px;
   size: 1rem;
 }
 .filters__select--blue {
@@ -97,3 +103,11 @@ body {
   color: white;
   background-color: #3282f7;
 }
+.selected {
+  width: 400px;
+}
+/* .filters__arrow--green {
+  position: absolute;
+  top: 230px;
+  left: 1000px;
+} */
