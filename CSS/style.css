@@ -41,10 +41,7 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* .section-filters__select ::placeholder {
-  z-index: 100;
-  color: black;
-} */
+
 .filters__arrow--red {
   position: absolute;
   color: rgb(255, 255, 255);
@@ -100,7 +97,7 @@ body {
   height: 200px;
 }
 .section-filters__custom-select.selected .section-filters__select {
-  width: 350px;
+  width: 310px;
 }
 .section-filters__list--green a {
   padding: 20px;
