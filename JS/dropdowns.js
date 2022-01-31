@@ -46,13 +46,24 @@ function addListenersToDropDowns(values, index) {
     })
   );
 }
-
+function addListenerToInput() {
+  const inputs = Array.from(
+    document.querySelectorAll(".section-filters__select")
+  );
+  inputs.forEach((input) =>
+    input.addEventListener("input", (e) => {
+      const value = e.target.value;
+      console.log(value);
+    })
+  );
+}
 export function displayDropdowns(sortOptions) {
   const ingrédients = generateIngrédientsSelect();
   const appliances = generateApplianceSelect();
   const ustensils = generateUstensilsSelect();
 
   addListenersToDropDowns([ingrédients, appliances, ustensils]);
+  addListenerToInput([ingrédients, appliances, ustensils]);
 }
 
 // récupérer les options selon la valeur du bouton
@@ -126,6 +137,7 @@ function displayUstensilsOptions(options) {
   input.value = " ";
   input.placeholder = " Rechercher un ustensil";
 }
+
 // function filterFunction() {
 //   // const input, filter, a, i;
 
