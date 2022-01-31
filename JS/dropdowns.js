@@ -25,8 +25,8 @@ function generateIngrédientsSelect() {
   const section = document.querySelector(".section-filters");
   section.innerHTML += `${ingrédientsCustomSelect}`;
 }
-
-async function addListenersToDropDowns(values, index) {
+// une fonction addEventListener par element
+function addListenersToDropDowns(values, index) {
   let elts = Array.from(
     document.querySelectorAll(".section-filters__custom-select")
   );
@@ -34,49 +34,43 @@ async function addListenersToDropDowns(values, index) {
   elts.forEach((elt) =>
     elt.addEventListener("click", (e) => {
       e.preventDefault();
-
+      e.stopPropagation();
       elt.classList.add("selected");
-
-      // const sortOptions = sortOptionsByButtonValue(
-      // recipes,
-      // values[index],
-      // index
-      // );
-      // console.log(sortOptions);
-      // const sort = sortOptions();
-      // console.log("const sortOption");
-      displayOptions();
-      // const placeholder = displayPlaceholderByButtonValue(value);
-      //   console.log(placeholder);
+      console.log(e.target);
+      const sortOptions = sortOptionsByButtonValue(e.target.value);
+      console.log(sortOptions);
+      displayOptions(sortOptions);
       // filterFunction();
+      // gérer les clicks suivants sur un autre élément
+      // fonction close select
     })
   );
 }
-export function displayDropdowns() {
+
+export function displayDropdowns(sortOptions) {
   const ingrédients = generateIngrédientsSelect();
-  const appliance = generateApplianceSelect();
+  const appliances = generateApplianceSelect();
   const ustensils = generateUstensilsSelect();
 
-  addListenersToDropDowns([ingrédients, appliance, ustensils]);
+  addListenersToDropDowns([ingrédients, appliances, ustensils]);
 }
 
 // récupérer les options selon la valeur du bouton
-// function sortOptionsByButtonValue(recipes, value, index) {
-//   console.log("sortOptionsByV");
-//   switch (index) {
-//     case 0:
-//       return getAllIngredientsFromRecipes();
+function sortOptionsByButtonValue(value) {
+  console.log(value);
+  switch (value) {
+    case "Ingrédients":
+      return getAllIngredientsFromRecipes();
+    case "Appareils":
+      return getAllAppliancesFromRecipes();
 
-//     case 1:
-//       return getAllAppliancesFromRecipes();
+    case "Ustensiles":
+      return getAllUstensilsFromRecipes();
 
-//     case 2:
-//       return getAllUstensilsFromRecipes();
-
-//     default:
-//       break;
-//   }
-// }
+    default:
+      break;
+  }
+}
 
 // tri pour les placeholders des input
 
@@ -84,13 +78,13 @@ export function displayDropdowns() {
 //   const input = document.querySelectorAll(".section-filters__select");
 //   switch (value) {
 //     case "Ingrédients":
-//       input.innerHtml = ` Recherche un ingrédient`;
+//       input.placeholder.innerHtml = ` Recherche un ingrédient`;
 
 //     case "Appareils":
-//       input.innerHtml = ` Recherche un appareil`;
+//       input.placeholder.innerHtml = ` Recherche un appareil`;
 
 //     case "Ustensiles":
-//       input.innerHtml = ` Recherche un ustensil`;
+//       input.placeholder.innerHtml = ` Recherche un ustensil`;
 
 //     default:
 //       break;
@@ -98,58 +92,48 @@ export function displayDropdowns() {
 // }
 
 function displayOptions(options) {
-  // console.log("displayOptions");
-  displayApplianceOptions();
-  // displayIngrédientsOptions();
-  // displayUstensilsOptions();
+  displayApplianceOptions(options);
+  displayIngrédientsOptions(options);
+  displayUstensilsOptions(options);
 }
-async function displayApplianceOptions() {
-  // console.log("displayApplianceOptions");
-  // const list = document.querySelector("#green");
-  // list.innerHTML += options.map((option) => `<p>${option}</p>.join`);
-  const Select = await generateApplianceSelect;
-  console.log(Select);
-  const appliances = [
-    ...new Set(
-      recipes.map((recipes) => recipes.appliance.toLowerCase()).sort()
-    ),
-  ];
-  console.log(appliances);
-  const appliancesList = document.querySelector("#green");
+function displayApplianceOptions(options) {
+  const applianceContainer = document.querySelector("#green");
+  applianceContainer.innerHTML = options
+    .map((option) => `<li>${option}</li>`)
+    .join("");
   const input = document.querySelector(".filters__select--green");
-  console.log(input);
   input.value = " ";
-  input.placeholder = `Rechercher`;
-  for (let i = 0; i < appliances.length; i++) {
-    const listElmt = document.createElement("li");
-    const link = document.createElement("a");
-    link.href = "#";
-    link.innerHTML = appliances[i];
-    appliancesList.appendChild(listElmt);
-    listElmt.appendChild(link);
-  }
+  input.placeholder = " Rechercher un appareil";
+  // const placeholder = displayPlaceholderByButtonValue();
+  // console.log(placeholder);
 }
-// async function sortOptions() {
-// const Select = await generateApplianceSelect;
-// console.log("select");
-// const appliances = [
-//   ...new Set(
-//     recipes.map((recipes) => recipes.appliance.toLowerCase()).sort()
-//   ),
-// ];
-// const appliancesList = document.querySelector("#green");
-// appliancesList.innerHTML += `${appliances}`;
-// console.log("now");
-// console.log(appliancesList);
-// }
 
+function displayIngrédientsOptions(options) {
+  const ingredientsContainer = document.querySelector("#blue");
+  ingredientsContainer.innerHTML = options
+    .map((option) => `<li>${option}</li>`)
+    .join("");
+  const input = document.querySelector(".filters__select--blue");
+  input.value = " ";
+  input.placeholder = " Rechercher un ingrédient";
+}
+function displayUstensilsOptions(options) {
+  const ustensilsContainer = document.querySelector("#red");
+  ustensilsContainer.innerHTML = options
+    .map((option) => `<li>${option}</li>`)
+    .join("");
+  const input = document.querySelector(".filters__select--red");
+  input.value = " ";
+  input.placeholder = " Rechercher un ustensil";
+}
 // function filterFunction() {
 //   // const input, filter, a, i;
-//   const input = document.queryselector(".section-filters__select");
+
+//   const input = document.querySelector(".section-filters__select");
 //   const filter = input.value.toUpperCase();
 //   const div = document.querySelector(".section-filters__custom-select");
-//   const a = div.querySelector("a");
-//   for (i = 0; i < a.length; i++) {
+//   const a = Array.from(div.querySelectorAll("a"));
+//   for (let i = 0; i < a.length; i++) {
 //     txtValue = a[i].textContent || a[i].innerText;
 //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
 //       a[i].style.display = "";
