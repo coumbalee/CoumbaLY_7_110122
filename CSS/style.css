@@ -41,6 +41,10 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+/* .section-filters__select ::placeholder {
+  z-index: 100;
+  color: black;
+} */
 .filters__arrow--red {
   position: absolute;
   color: rgb(255, 255, 255);
@@ -60,6 +64,12 @@ body {
   font-size: 1.1rem;
   color: white;
   background-color: #ed6454;
+}
+.section-filters__custom-select.selected .section-filters__list--red {
+  background-color: #ed6454;
+  display: flex;
+  flex-wrap: wrap;
+  height: 200px;
 }
 
 .filters__arrow--green {
@@ -116,6 +126,12 @@ body {
   color: white;
   background-color: #3282f7;
 }
+.section-filters__custom-select.selected .section-filters__list--blue {
+  background-color: #3282f7;
+  display: flex;
+  flex-wrap: wrap;
+  height: 200px;
+}
 .selected {
   width: 350px;
 }
@@ -124,3 +140,11 @@ body {
   top: 230px;
   left: 1000px;
 } */
+.hide {
+  display: none;
+}
+
+.section-filters__list li {
+  color: white;
+  margin-left: 10px;
+}
