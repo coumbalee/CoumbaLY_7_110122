@@ -7,7 +7,7 @@ export default class Select {
     return `
     <div class="section-filters__custom-select  filters__custom-select--${this.color}">
         <span class="section-filters__arrow  filters__arrow--${this.color}"> <i class="fas fa-chevron-down"></i></span>
-        <input  class="section-filters__select filters__select--${this.color}" type="text" data-color="${this.color}" value="${this.value}" >
+        <input id="mySearch" class="section-filters__select filters__select--${this.color}" type="text" data-color="${this.color}" value="${this.value}" >
         <ul id = "${this.color}" class="section-filters__list section-filters__list--${this.color}"></ul>
     </div>
     `;
