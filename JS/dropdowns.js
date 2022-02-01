@@ -52,11 +52,27 @@ function addListenerToInput() {
   );
   inputs.forEach((input) =>
     input.addEventListener("input", (e) => {
+      e.preventDefault();
       const value = e.target.value;
       console.log(value);
+
+      filterFunction();
     })
   );
 }
+// function addListenerToOptions() {
+//   const inputs = Array.from(
+//     document.querySelectorAll(".section-filters__select")
+//   );
+//   inputs.addEventListener("input", (e) => {
+//     const value = e.target.value;
+//     const options = Array.from(document.querySelectorAll(".options"));
+//     options.forEach((option) => {
+//       const isVisible = option.includes(value);
+//       options.element.classList.toggle("hide", !isVisible);
+//     });
+//   });
+// }
 export function displayDropdowns(sortOptions) {
   const ingrédients = generateIngrédientsSelect();
   const appliances = generateApplianceSelect();
@@ -64,6 +80,7 @@ export function displayDropdowns(sortOptions) {
 
   addListenersToDropDowns([ingrédients, appliances, ustensils]);
   addListenerToInput([ingrédients, appliances, ustensils]);
+  // addListenerToOptions([ingrédients, appliances, ustensils]);
 }
 
 // récupérer les options selon la valeur du bouton
@@ -110,7 +127,7 @@ function displayOptions(options) {
 function displayApplianceOptions(options) {
   const applianceContainer = document.querySelector("#green");
   applianceContainer.innerHTML = options
-    .map((option) => `<li>${option}</li>`)
+    .map((option) => `<li class="options"><a>${option}</a></li>`)
     .join("");
   const input = document.querySelector(".filters__select--green");
   input.value = " ";
@@ -122,7 +139,7 @@ function displayApplianceOptions(options) {
 function displayIngrédientsOptions(options) {
   const ingredientsContainer = document.querySelector("#blue");
   ingredientsContainer.innerHTML = options
-    .map((option) => `<li>${option}</li>`)
+    .map((option) => `<li class="options"><a>${option}</a></li>`)
     .join("");
   const input = document.querySelector(".filters__select--blue");
   input.value = " ";
@@ -131,26 +148,27 @@ function displayIngrédientsOptions(options) {
 function displayUstensilsOptions(options) {
   const ustensilsContainer = document.querySelector("#red");
   ustensilsContainer.innerHTML = options
-    .map((option) => `<li>${option}</li>`)
+    .map((option) => `<li class="options"><a>${option}</a></li>`)
     .join("");
   const input = document.querySelector(".filters__select--red");
   input.value = " ";
   input.placeholder = " Rechercher un ustensil";
 }
 
-// function filterFunction() {
-//   // const input, filter, a, i;
-
-//   const input = document.querySelector(".section-filters__select");
-//   const filter = input.value.toUpperCase();
-//   const div = document.querySelector(".section-filters__custom-select");
-//   const a = Array.from(div.querySelectorAll("a"));
-//   for (let i = 0; i < a.length; i++) {
-//     txtValue = a[i].textContent || a[i].innerText;
-//     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//       a[i].style.display = "";
-//     } else {
-//       a[i].style.display = "none";
-//     }
-//   }
-// }
+function filterFunction() {
+  // ajouter le onKeyup à l'input
+  const input = document.querySelector("#mySearch");
+  const filter = input.value.toLowerCase();
+  const ul = document.querySelectorAll(".section-filters__list");
+  const li = document.querySelectorAll(".options");
+  for (let i = 0; i < li.length; i++) {
+    const a = li[i].querySelectorAll("a")[0];
+    console.log(a);
+    // ESSAYER AVEC ISVISIBLE
+    if (a.innerHTML.toLowerCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
