@@ -124,7 +124,7 @@ body {
   color: white;
   background-color: #3282f7;
 }
-c .section-filters__list--blue {
+.section-filters__custom-select.selected .section-filters__list--blue {
   background-color: #3282f7;
   display: flex;
   flex-wrap: wrap;
