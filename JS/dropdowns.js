@@ -40,12 +40,12 @@ function addListenersToDropDowns(values, index) {
       const sortOptions = sortOptionsByButtonValue(e.target.value);
       console.log(sortOptions);
       displayOptions(sortOptions);
-      // filterFunction();
       // gérer les clicks suivants sur un autre élément
       // fonction close select
     })
   );
 }
+
 function addListenerToInput() {
   const inputs = Array.from(
     document.querySelectorAll(".section-filters__select")
@@ -127,7 +127,7 @@ function displayOptions(options) {
 function displayApplianceOptions(options) {
   const applianceContainer = document.querySelector("#green");
   applianceContainer.innerHTML = options
-    .map((option) => `<li class="options"><a>${option}</a></li>`)
+    .map((option) => `<li class="options"><a href="#tags">${option}</a></li>`)
     .join("");
   const input = document.querySelector(".filters__select--green");
   input.value = " ";
@@ -139,7 +139,7 @@ function displayApplianceOptions(options) {
 function displayIngrédientsOptions(options) {
   const ingredientsContainer = document.querySelector("#blue");
   ingredientsContainer.innerHTML = options
-    .map((option) => `<li class="options"><a>${option}</a></li>`)
+    .map((option) => `<li class="options"><a href="#tags">${option}</a></li>`)
     .join("");
   const input = document.querySelector(".filters__select--blue");
   input.value = " ";
@@ -148,7 +148,7 @@ function displayIngrédientsOptions(options) {
 function displayUstensilsOptions(options) {
   const ustensilsContainer = document.querySelector("#red");
   ustensilsContainer.innerHTML = options
-    .map((option) => `<li class="options"><a>${option}</a></li>`)
+    .map((option) => `<li class="options"><a href="#tags">${option}</a></li>`)
     .join("");
   const input = document.querySelector(".filters__select--red");
   input.value = " ";
@@ -172,3 +172,18 @@ function filterFunction() {
     }
   }
 }
+// document.addEventListener("click", closeAllSelect());
+// async function closeAllSelect() {
+//   const customSelect = Array.from(
+//     document.querySelectorAll(".section-filters__custom-select")
+//   );
+//   console.log(customSelect);
+//   customSelect.remove();
+// }
+document.addEventListener("click", function () {
+  const customSelect = Array.from(
+    document.querySelectorAll(".section-filters__custom-select")
+  );
+  console.log(customSelect);
+  customSelect.remove();
+});
