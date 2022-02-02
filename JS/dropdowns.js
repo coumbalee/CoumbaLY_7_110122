@@ -41,7 +41,7 @@ function addListenersToDropDowns(values, index) {
       const sortOptions = sortOptionsByButtonValue(e.target.value);
       console.log(sortOptions);
       displayOptions(sortOptions);
-      // gérer les clicks suivants sur un autre élément
+      // gérer les clicks suivants
       // fonction close select
     })
   );
@@ -61,19 +61,25 @@ function addListenerToInput() {
     })
   );
 }
-// function addListenerToOptions() {
-//   const inputs = Array.from(
-//     document.querySelectorAll(".section-filters__select")
-//   );
-//   inputs.addEventListener("input", (e) => {
-//     const value = e.target.value;
-//     const options = Array.from(document.querySelectorAll(".options"));
-//     options.forEach((option) => {
-//       const isVisible = option.includes(value);
-//       options.element.classList.toggle("hide", !isVisible);
-//     });
-//   });
-// }
+function addListenerToOptions() {
+  const options = Array.from(document.querySelectorAll(".options"));
+  options.forEach((option) =>
+    option.addEventListener("click", (e) => {
+      e.preventDefault();
+      const value = e.target.value;
+      console.log(value);
+    })
+  );
+
+  // options.addEventListener("click", (e) => {
+  //   const value = e.target.value;
+  //   console.log(value);
+  //   options.forEach((option) => {
+  //     const tagElmt = document.querySelector(".section-tags__name");
+  //     tagElmt = new Tag();
+  //   });
+  // });
+}
 export function displayDropdowns(sortOptions) {
   const ingrédients = generateIngrédientsSelect();
   const appliances = generateApplianceSelect();
@@ -81,10 +87,9 @@ export function displayDropdowns(sortOptions) {
 
   addListenersToDropDowns([ingrédients, appliances, ustensils]);
   addListenerToInput([ingrédients, appliances, ustensils]);
-  // addListenerToOptions([ingrédients, appliances, ustensils]);
+  addListenerToOptions([ingrédients, appliances, ustensils]);
 }
 
-// récupérer les options selon la valeur du bouton
 function sortOptionsByButtonValue(value) {
   console.log(value);
   switch (value) {
@@ -157,7 +162,6 @@ function displayUstensilsOptions(options) {
 }
 
 function filterFunction() {
-  // ajouter le onKeyup à l'input
   const input = document.querySelector("#mySearch");
   const filter = input.value.toLowerCase();
   const ul = document.querySelectorAll(".section-filters__list");
@@ -165,7 +169,6 @@ function filterFunction() {
   for (let i = 0; i < li.length; i++) {
     const a = li[i].querySelectorAll("a")[0];
     console.log(a);
-    // ESSAYER AVEC ISVISIBLE
     if (a.innerHTML.toLowerCase().indexOf(filter) > -1) {
       li[i].style.display = "";
     } else {
@@ -173,26 +176,13 @@ function filterFunction() {
     }
   }
 }
-// document.addEventListener("click", closeAllSelect());
-// async function closeAllSelect() {
+
+// CLOSE SELECT
+
+// document.addEventListener("click", function () {
 //   const customSelect = Array.from(
 //     document.querySelectorAll(".section-filters__custom-select")
 //   );
 //   console.log(customSelect);
 //   customSelect.remove();
-// }
-document.addEventListener("click", function () {
-  const customSelect = Array.from(
-    document.querySelectorAll(".section-filters__custom-select")
-  );
-  console.log(customSelect);
-  customSelect.remove();
-});
-
-// CHERCHER COMMENT Y AFFICHER LE A CLIQUÉ ET D'OU APPELER LA FONCTION TAGS
-function tags() {
-  const tagsElt = document.querySelector(".section-tags__name");
-  // const option = document.querySelector(".options");
-  tagsElt.innerHTML = new Tag();
-}
-tags();
+// });
