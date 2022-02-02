@@ -24,10 +24,6 @@ a {
   opacity: 0.8;
 }
 
-.section-filters {
-  display: flex;
-  justify-content: space-between;
-}
 .section-search__input {
   background-color: #e7e7e7;
   width: 100%;
@@ -40,11 +36,20 @@ a {
   opacity: 40%;
   font-size: 1.1rem;
 }
-
+/* Section-tags */
+.section-tags__item {
+  display: flex;
+  justify-content: flex-start;
+}
+.section-tags__name {
+  margin-right: 5px;
+}
 /* Section-filters */
 .section-filters {
   margin-top: 20px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .filters__arrow--red {
