@@ -5,6 +5,7 @@ import {
   getAllIngredientsFromRecipes,
 } from "./dataRecipes.js";
 import { recipes } from "./recipes.js";
+import Tag from "./TagsClass.js";
 
 function generateUstensilsSelect() {
   const ustensilsSelect = new Select("red", "Ustensiles");
@@ -34,7 +35,7 @@ function addListenersToDropDowns(values, index) {
   elts.forEach((elt) =>
     elt.addEventListener("click", (e) => {
       e.preventDefault();
-      e.stopPropagation();
+      // e.stopPropagation();
       elt.classList.add("selected");
       console.log(e.target);
       const sortOptions = sortOptionsByButtonValue(e.target.value);
@@ -187,3 +188,11 @@ document.addEventListener("click", function () {
   console.log(customSelect);
   customSelect.remove();
 });
+
+// CHERCHER COMMENT Y AFFICHER LE A CLIQUÉ ET D'OU APPELER LA FONCTION TAGS
+function tags() {
+  const tagsElt = document.querySelector(".section-tags__name");
+  // const option = document.querySelector(".options");
+  tagsElt.innerHTML = new Tag();
+}
+tags();
