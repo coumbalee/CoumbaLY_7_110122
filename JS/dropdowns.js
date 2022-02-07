@@ -143,8 +143,8 @@ function displayApplianceOptions(options) {
     .map((option) => `<li class="options"><a href="#tags">${option}</a></li>`)
     .join("");
   const input = document.querySelector(".filters__select--green");
-  input.value = " ";
-  input.placeholder = " Rechercher un appareil";
+  input.value = null;
+  input.placeholder = "Rechercher un appareil";
   // const placeholder = displayPlaceholderByButtonValue();
   // console.log(placeholder);
 }
@@ -155,8 +155,8 @@ function displayIngrédientsOptions(options) {
     .map((option) => `<li class="options"><a href="#tags">${option}</a></li>`)
     .join("");
   const input = document.querySelector(".filters__select--blue");
-  input.value = " ";
-  input.placeholder = " Rechercher un ingrédient";
+  input.value = null;
+  input.placeholder = "Rechercher un ingrédient";
 }
 function displayUstensilsOptions(options) {
   const ustensilsContainer = document.querySelector("#red");
@@ -164,8 +164,8 @@ function displayUstensilsOptions(options) {
     .map((option) => `<li class="options"><a href="#tags">${option}</a></li>`)
     .join("");
   const input = document.querySelector(".filters__select--red");
-  input.value = " ";
-  input.placeholder = " Rechercher un ustensil";
+  input.value = null;
+  input.placeholder = "Rechercher un ustensil";
 }
 
 function filterFunction() {
