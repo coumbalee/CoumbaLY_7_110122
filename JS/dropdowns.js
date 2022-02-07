@@ -40,7 +40,7 @@ function addListenersToDropDowns(values, index) {
       console.log(e.target);
       const sortOptions = sortOptionsByButtonValue(e.target.value);
       console.log(sortOptions);
-      displayOptions(sortOptions);
+      displayOptions(sortOptions, e.target.value);
       // gérer les clicks suivants
       // fonction close select
     })
@@ -125,10 +125,17 @@ function sortOptionsByButtonValue(value) {
 //   }
 // }
 
-function displayOptions(options) {
-  displayApplianceOptions(options);
-  displayIngrédientsOptions(options);
-  displayUstensilsOptions(options);
+function displayOptions(options, selector) {
+  switch (selector) {
+    case "Appareils":
+      displayApplianceOptions(options);
+      break;
+    case "Ingrédients":
+      displayIngrédientsOptions(options);
+      break;
+    case "Ustensiles":
+      displayUstensilsOptions(options);
+  }
 }
 function displayApplianceOptions(options) {
   const applianceContainer = document.querySelector("#green");
