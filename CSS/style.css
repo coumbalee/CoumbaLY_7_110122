@@ -99,10 +99,10 @@ a {
   color: white;
   background-color: #68d9a4;
 }
-/* .filters__select--green::placeholder {
-  z-index: 100;
-  color: black;
-} */
+#mySearch::placeholder {
+  color: white;
+  opacity: 0.6;
+}
 .section-filters__custom-select.selected .section-filters__list--green {
   background-color: #68d9a4;
   display: flex;
