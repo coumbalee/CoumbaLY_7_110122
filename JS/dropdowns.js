@@ -41,7 +41,6 @@ function addListenersToDropDowns(values, index) {
       const sortOptions = sortOptionsByButtonValue(e.target.value);
       console.log(sortOptions);
       displayOptions(sortOptions, e.target.value);
-      // gérer les clicks suivants
       // fonction close select
     })
   );
@@ -57,7 +56,7 @@ function addListenerToInput() {
       const value = e.target.value;
       console.log(value);
 
-      filterFunction();
+      filterFunction(input);
     })
   );
 }
@@ -106,24 +105,6 @@ function sortOptionsByButtonValue(value) {
   }
 }
 
-// tri pour les placeholders des input
-
-// function displayPlaceholderByButtonValue(value) {
-//   const input = document.querySelectorAll(".section-filters__select");
-//   switch (value) {
-//     case "Ingrédients":
-//       input.placeholder.innerHtml = ` Recherche un ingrédient`;
-
-//     case "Appareils":
-//       input.placeholder.innerHtml = ` Recherche un appareil`;
-
-//     case "Ustensiles":
-//       input.placeholder.innerHtml = ` Recherche un ustensil`;
-
-//     default:
-//       break;
-//   }
-// }
 
 function displayOptions(options, selector) {
   switch (selector) {
@@ -145,9 +126,7 @@ function displayApplianceOptions(options) {
   const input = document.querySelector(".filters__select--green");
   input.value = null;
   input.placeholder = "Rechercher un appareil";
-  // const placeholder = displayPlaceholderByButtonValue();
-  // console.log(placeholder);
-}
+  
 
 function displayIngrédientsOptions(options) {
   const ingredientsContainer = document.querySelector("#blue");
@@ -168,11 +147,11 @@ function displayUstensilsOptions(options) {
   input.placeholder = "Rechercher un ustensil";
 }
 
-function filterFunction() {
-  const input = document.querySelector("#mySearch");
+function filterFunction(input) {
   const filter = input.value.toLowerCase();
-  const ul = document.querySelectorAll(".section-filters__list");
-  const li = document.querySelectorAll(".options");
+  const li = input
+    .closest(".section-filters__custom-select")
+    .querySelectorAll(".options");
   for (let i = 0; i < li.length; i++) {
     const a = li[i].querySelectorAll("a")[0];
     console.log(a);
