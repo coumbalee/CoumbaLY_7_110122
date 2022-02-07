@@ -44,6 +44,13 @@ a {
 .section-tags__name {
   margin-right: 5px;
 }
+/* Section-tags */
+.section-tags {
+  display: flex;
+}
+.section-tags-item {
+  display: flex;
+}
 /* Section-filters */
 .section-filters {
   margin-top: 20px;
