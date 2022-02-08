@@ -26,6 +26,7 @@ function generateIngrédientsSelect() {
   const section = document.querySelector(".section-filters");
   section.innerHTML += `${ingrédientsCustomSelect}`;
 }
+// une fonction addEventListener par element
 function addListenersToDropDowns(values, index) {
   let elts = Array.from(
     document.querySelectorAll(".section-filters__custom-select")
@@ -36,10 +37,13 @@ function addListenersToDropDowns(values, index) {
       e.preventDefault();
       e.stopPropagation();
       elt.classList.add("selected");
+
       console.log(e.target.textContent);
+
       const sortOptions = sortOptionsByButtonValue(e.target.value);
       console.log(sortOptions);
       displayOptions(sortOptions, e.target.value);
+      // fonction close select
     })
   );
 }
@@ -54,6 +58,7 @@ function addListenerToInput() {
       const value = e.target.value;
       // console.log(e.target.dataset);
       console.log(value);
+
       filterFunction(input);
     })
   );
@@ -88,6 +93,7 @@ function removeTag() {
   const Tag = document.querySelector(".section-tags__item");
   Tag.remove();
 }
+
 export function displayDropdowns(sortOptions) {
   const ingrédients = generateIngrédientsSelect();
   const appliances = generateApplianceSelect();
@@ -95,6 +101,7 @@ export function displayDropdowns(sortOptions) {
 
   addListenersToDropDowns([ingrédients, appliances, ustensils]);
   addListenerToInput([ingrédients, appliances, ustensils]);
+  // addListenerToOptions([ingrédients, appliances, ustensils]);
 }
 
 function sortOptionsByButtonValue(value) {
