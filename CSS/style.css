@@ -48,8 +48,24 @@ a {
 .section-tags {
   display: flex;
 }
-.section-tags-item {
+.section-tags__item {
   display: flex;
+  color: white;
+}
+.section-tags__item[data-color="blue"] {
+  background-color: #3282f7;
+  padding: 8px 5px;
+  border-radius: 5px;
+}
+.section-tags__item[data-color="green"] {
+  background-color: #68d9a4;
+  padding: 8px 5px;
+  border-radius: 5px;
+}
+.section-tags__item[data-color="red"] {
+  background-color: #ed6454;
+  padding: 8px 5px;
+  border-radius: 6px;
 }
 /* Section-filters */
 .section-filters {
