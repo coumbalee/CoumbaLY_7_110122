@@ -180,10 +180,9 @@ function filterFunction(input) {
 
 // CLOSE SELECT
 
-// document.addEventListener("click", function () {
-//   const customSelect = Array.from(
-//     document.querySelectorAll(".section-filters__custom-select")
-//   );
-//   console.log(customSelect);
-//   customSelect.remove();
-// });
+document.addEventListener("click", removeList);
+function removeList() {
+  const option = document.querySelector(".options");
+  const list = option.closest("ul");
+  list.remove();
+}
