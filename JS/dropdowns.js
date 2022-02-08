@@ -35,9 +35,11 @@ function addListenersToDropDowns(values, index) {
   elts.forEach((elt) =>
     elt.addEventListener("click", (e) => {
       e.preventDefault();
-      // e.stopPropagation();
+      e.stopPropagation();
       elt.classList.add("selected");
-      console.log(e.target);
+
+      console.log(e.target.textContent);
+
       const sortOptions = sortOptionsByButtonValue(e.target.value);
       console.log(sortOptions);
       displayOptions(sortOptions, e.target.value);
@@ -54,20 +56,40 @@ function addListenerToInput() {
     input.addEventListener("input", (e) => {
       e.preventDefault();
       const value = e.target.value;
+      // console.log(e.target.dataset);
       console.log(value);
 
       filterFunction(input);
     })
   );
 }
-function addListenerToOptions() {
+function createTagFromOption() {
   const options = Array.from(document.querySelectorAll(".options"));
-  options.forEach((option) =>
-    option.addEventListener("click", (e) => {
-      e.preventDefault();
-      const value = e.target.value;
-      console.log(value);
-    })
+  console.log(options);
+  options.forEach(
+    (option) =>
+      option.addEventListener("click", (e) => {
+        e.preventDefault();
+        const value = e.target;
+        console.log(value);
+        document.querySelector(
+          ".section-tags"
+        ).innerHTML += ` <span class="section-tags__item ">
+      <p class="section-tags__name">${e.target.textContent}</p>
+      <i class="far fa-times-circle fa-lg section-tags__close"></i>
+      </span>`;
+        const optionFromSelect = option.closest(
+          ".section-filters__custom-select"
+        );
+        console.log(optionFromSelect.dataset.color);
+        const tag = document.querySelector(".section-tags__item");
+        tag.setAttribute("data-color", optionFromSelect.dataset.color);
+      })
+    // Essayer de récupérer la couleur du select dans lequel l'option cliqué se trouve
+
+    // Tenter dataset du tag= data set du select
+    // Créer un swich qui va ajouter une class color( color-blue, color-green...)
+    // Fermer le tag
   );
 
   // options.addEventListener("click", (e) => {
@@ -86,7 +108,7 @@ export function displayDropdowns(sortOptions) {
 
   addListenersToDropDowns([ingrédients, appliances, ustensils]);
   addListenerToInput([ingrédients, appliances, ustensils]);
-  addListenerToOptions([ingrédients, appliances, ustensils]);
+  // addListenerToOptions([ingrédients, appliances, ustensils]);
 }
 
 function sortOptionsByButtonValue(value) {
@@ -105,7 +127,6 @@ function sortOptionsByButtonValue(value) {
   }
 }
 
-
 function displayOptions(options, selector) {
   switch (selector) {
     case "Appareils":
@@ -117,6 +138,7 @@ function displayOptions(options, selector) {
     case "Ustensiles":
       displayUstensilsOptions(options);
   }
+  createTagFromOption();
 }
 function displayApplianceOptions(options) {
   const applianceContainer = document.querySelector("#green");
@@ -126,7 +148,7 @@ function displayApplianceOptions(options) {
   const input = document.querySelector(".filters__select--green");
   input.value = null;
   input.placeholder = "Rechercher un appareil";
-  
+}
 
 function displayIngrédientsOptions(options) {
   const ingredientsContainer = document.querySelector("#blue");
