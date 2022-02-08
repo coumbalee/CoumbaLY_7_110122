@@ -66,40 +66,32 @@ function addListenerToInput() {
 function createTagFromOption() {
   const options = Array.from(document.querySelectorAll(".options"));
   console.log(options);
-  options.forEach(
-    (option) =>
-      option.addEventListener("click", (e) => {
-        e.preventDefault();
-        const value = e.target;
-        console.log(value);
-        document.querySelector(
-          ".section-tags"
-        ).innerHTML += ` <span class="section-tags__item ">
+  options.forEach((option) =>
+    option.addEventListener("click", (e) => {
+      e.preventDefault();
+      const value = e.target;
+      console.log(value);
+      document.querySelector(
+        ".section-tags"
+      ).innerHTML += ` <span class="section-tags__item ">
       <p class="section-tags__name">${e.target.textContent}</p>
       <i class="far fa-times-circle fa-lg section-tags__close"></i>
       </span>`;
-        const optionFromSelect = option.closest(
-          ".section-filters__custom-select"
-        );
-        console.log(optionFromSelect.dataset.color);
-        const tag = document.querySelector(".section-tags__item");
-        tag.setAttribute("data-color", optionFromSelect.dataset.color);
-      })
-    // Essayer de récupérer la couleur du select dans lequel l'option cliqué se trouve
-
-    // Tenter dataset du tag= data set du select
-    // Créer un swich qui va ajouter une class color( color-blue, color-green...)
-    // Fermer le tag
+      const optionFromSelect = option.closest(
+        ".section-filters__custom-select"
+      );
+      console.log(optionFromSelect.dataset.color);
+      const tag = document.querySelector(".section-tags__item");
+      tag.setAttribute("data-color", optionFromSelect.dataset.color);
+    })
   );
-
-  // options.addEventListener("click", (e) => {
-  //   const value = e.target.value;
-  //   console.log(value);
-  //   options.forEach((option) => {
-  //     const tagElmt = document.querySelector(".section-tags__name");
-  //     tagElmt = new Tag();
-  //   });
-  // });
+  const buttonClose = document.querySelector(".section-tags__close");
+  console.log(buttonClose);
+  buttonClose.addEventListener("click", removeTag);
+}
+function removeTag() {
+  const Tag = document.querySelector(".section-tags__item");
+  Tag.remove();
 }
 export function displayDropdowns(sortOptions) {
   const ingrédients = generateIngrédientsSelect();
