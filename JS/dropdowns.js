@@ -39,11 +39,11 @@ function addListenersToDropDowns(values, index) {
       elt.classList.add("selected");
 
       console.log(e.target.textContent);
+      console.log(e.target.dataset.color);
 
       const sortOptions = sortOptionsByButtonValue(e.target.value);
       console.log(sortOptions);
       displayOptions(sortOptions, e.target.value);
-      // fonction close select
     })
   );
 }
@@ -73,7 +73,7 @@ function createTagFromOption() {
       console.log(value);
       document.querySelector(
         ".section-tags"
-      ).innerHTML += ` <span class="section-tags__item ">
+      ).innerHTML = ` <span class="section-tags__item ">
       <p class="section-tags__name">${e.target.textContent}</p>
       <i class="far fa-times-circle fa-lg section-tags__close"></i>
       </span>`;
@@ -101,7 +101,6 @@ export function displayDropdowns(sortOptions) {
 
   addListenersToDropDowns([ingrédients, appliances, ustensils]);
   addListenerToInput([ingrédients, appliances, ustensils]);
-  // addListenerToOptions([ingrédients, appliances, ustensils]);
 }
 
 function sortOptionsByButtonValue(value) {
@@ -119,6 +118,21 @@ function sortOptionsByButtonValue(value) {
       break;
   }
 }
+// function sortOptionsByDataset(dataset, color) {
+//   console.log(dataset);
+//   switch (color) {
+//     case "blue":
+//       return getAllIngredientsFromRecipes();
+//     case "green":
+//       return getAllAppliancesFromRecipes();
+
+//     case "red":
+//       return getAllUstensilsFromRecipes();
+
+//     default:
+//       break;
+//   }
+// }
 
 function displayOptions(options, selector) {
   switch (selector) {
@@ -133,6 +147,19 @@ function displayOptions(options, selector) {
   }
   createTagFromOption();
 }
+// function displayOptions(options, selector) {
+//   switch (selector) {
+//     case "green":
+//       displayApplianceOptions(options);
+//       break;
+//     case "blue":
+//       displayIngrédientsOptions(options);
+//       break;
+//     case "red":
+//       displayUstensilsOptions(options);
+//   }
+//   createTagFromOption();
+// }
 function displayApplianceOptions(options) {
   const applianceContainer = document.querySelector("#green");
   applianceContainer.innerHTML = options
@@ -184,5 +211,8 @@ document.addEventListener("click", removeList);
 function removeList() {
   const option = document.querySelector(".options");
   const list = option.closest("ul");
+  console.log(list);
+  list.classList.remove("selected");
+
   list.remove();
 }
